@@ -13,6 +13,7 @@
 			.then((result) => {
 				console.log('Successfully signed in:', result.user);
 				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+
 				return result.user;
 			})
 			.then((res) => {

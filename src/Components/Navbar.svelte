@@ -3,7 +3,7 @@
 		<a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
 			<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
-				>Flowbite</span
+				>Event Handlers Meal Prep</span
 			>
 		</a>
 		<div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
@@ -16,8 +16,19 @@
 				data-dropdown-placement="bottom"
 			>
 				<span class="sr-only">Open user menu</span>
-				<!-- svelte-ignore a11y-img-redundant-alt -->
-				<img class="h-8 w-8 rounded-full" src="/src/Images/profilepic.svg" alt="user photo" />
+				<div class="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+					<svg
+						class="absolute -left-1 h-12 w-12 text-gray-400"
+						fill="currentColor"
+						viewBox="0 0 20 20"
+						xmlns="http://www.w3.org/2000/svg"
+						><path
+							fill-rule="evenodd"
+							d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+							clip-rule="evenodd"
+						></path>
+					</svg>
+				</div>
 			</button>
 			<!-- Dropdown menu -->
 			<div
@@ -33,21 +44,14 @@
 				<ul class="py-2" aria-labelledby="user-menu-button">
 					<li>
 						<a
-							href="#"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-							>Dashboard</a
-						>
-					</li>
-					<li>
-						<a
-							href="#"
+							href="/settings"
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
 							>Settings</a
 						>
 					</li>
 					<li>
 						<a
-							href="#"
+							href="/sign-out"
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
 							>Sign out</a
 						>
@@ -88,35 +92,35 @@
 			>
 				<li>
 					<a
-						href="#"
+						href="/"
 						class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
 						aria-current="page">Home</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						href="/calendar"
 						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
 						>My Calendar</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						href="/shopping-list"
 						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
 						>My Shopping List</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						href="/recipes"
 						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
 						>My Recipes</a
 					>
 				</li>
 				<li>
 					<a
-						href="#"
+						href="/contact"
 						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
 						>Contact Us!</a
 					>
