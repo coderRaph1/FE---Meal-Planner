@@ -29,7 +29,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"add-to-calendar-button": "^2.6.19",
-		"firebase": "^10.13.0"
+
 	}
 }
