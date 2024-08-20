@@ -17,6 +17,7 @@
 ></add-to-calendar-button>
 
 <add-to-calendar-button
+label='Add a meal'
   name="Title"
   options='Google'
   location="World Wide Web"
@@ -28,6 +29,7 @@
 ></add-to-calendar-button>
 
 <add-to-calendar-button
+label='Add a meal'
   name="Title"
   options='Google'
   location="World Wide Web"
@@ -39,6 +41,7 @@
 ></add-to-calendar-button>
 
 <add-to-calendar-button
+label='Add a meal'
   name="Title"
   options='Google'
   location="World Wide Web"
