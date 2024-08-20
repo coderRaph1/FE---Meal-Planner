@@ -5,19 +5,17 @@
     let selectedDay = null
     let weekDates = [];
 
-    // grabs selectedDay from URL
     function getSelectedDayFromUrl() {
         const urlParams = new URLSearchParams(window.location.search)
         console.log(window)
         return urlParams.get('selectedDay')
     }
 
-    // Function to set selected day and reload the page
     function selectDay(day) {
         window.location.href = `?selectedDay=${day}`
     }
 
-    // Function to generate a week's worth of dates
+   
     function generateWeekDates() {
         const today = new Date()
         const weekStart = today.getDate() - today.getDay()
