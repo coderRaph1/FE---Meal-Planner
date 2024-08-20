@@ -1,10 +1,9 @@
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
 	<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-		<a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
+		<a href="https://www.readyseteat.com/recipes-Sloppy-Joe-Cornbread-Bake-5194" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
 			<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
-				>Event Handlers Meal Prep</span
-			>
+				>#1 Meal Planner</span>
 		</a>
 		<div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
 			<button
