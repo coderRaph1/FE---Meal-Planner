@@ -1,10 +1,8 @@
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "firebase/app";
-// import "firebase/firestore";
 
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore"; 
 
 
 // firebase.initializeApp(firebaseConfig);

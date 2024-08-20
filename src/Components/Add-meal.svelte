@@ -3,8 +3,10 @@
 </script> 
 
 
-<section class="mx-auto border-black flex items-center flex-col">
-<add-to-calendar-button
+<section class="container mx-auto border-black flex items-center flex-col">
+<section class="box">
+
+  <add-to-calendar-button
   label='Add a meal'
   name="Title"
   options='Google'
@@ -14,7 +16,9 @@
   startTime="10:15"
   endTime="23:30"
   timeZone="America/Los_Angeles"  
+  hideCheckmark
 ></add-to-calendar-button>
+</section>
 
 <add-to-calendar-button
 label='Add a meal'
