@@ -1,13 +1,12 @@
 <script>
-import {firebaseConfig, app} from '../firebase.config'
+import {firebaseConfig, app, db} from '../firebase.config'
 import { goto } from '$app/navigation';
-
+import { getFirestore } from "firebase/firestore";
 import {getAuth, signInWithPopup,GoogleAuthProvider, onAuthStateChanged} from 'firebase/auth'
-	import Calendar from './Calendar.svelte';
+import { doc, setDoc } from "firebase/firestore"; 
 
-function navigate() {
-    goto('/calendar');
-  }
+
+
 
 const auth = getAuth()
 const users = auth.currentUser
@@ -20,13 +19,36 @@ let signedIn = false
 onAuthStateChanged(auth, (user)=>{
   if (user !== null){
     signedIn = true
-    console.log(user.displayName, '<<< hello')
+    console.log(user, '<<< hello')
   }
 })
 
 
-function handleClick () {
-    signInWithPopup(auth,new GoogleAuthProvider())
+
+
+  function handleClick() {
+    signInWithPopup(auth, new GoogleAuthProvider())
+      .then((result) => {
+        console.log('Successfully signed in:', result.user);
+        goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+        return result.user
+      })
+      .then((res) => {
+        console.log(res, 'this is the rizz')
+        const splitName = res.displayName.split(' ')
+        const firstName = splitName[0]
+        const lastName = splitName [1]
+        setDoc(doc(db, "users", res.email), {
+  first_name: firstName,
+  last_name: lastName,
+  username: res.displayName,
+  email: res.email,
+  avatarURL: res.photoURL
+});
+      })
+      .catch((error) => {
+        console.error('Error signing in:', error);
+      });
   }
 
 </script>
@@ -40,7 +62,7 @@ function handleClick () {
  return <LoginComponentContents/> -->
 
  
- <a href="/calendar"><button on:click={handleClick}>Sign Up!</button></a>
+ <button on:click={handleClick}>Sign Up!</button>
  
  
  <!-- {#if signedIn === false} -->

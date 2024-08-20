@@ -1,3 +1,7 @@
+<script>
+	import AddMeal from "./Add-meal.svelte";
+
+</script>
 <div class="h-screen bg-gray-100 p-6">
     <!-- { /*variation dark set*/ } -->
   
@@ -78,3 +82,6 @@
      
      
    </div>
+
+
+   <AddMeal/>
