@@ -2,6 +2,7 @@
     import { onMount } from 'svelte'
 	import AddMeal from './Add-meal.svelte'
 
+ 
     let selectedDay = null
     let weekDates = [];
 
