@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte'
 	import AddMeal from './Add-meal.svelte'
-
  
     let selectedDay = null
     let weekDates = [];
@@ -38,6 +37,9 @@
     onMount(() => {
         selectedDay = getSelectedDayFromUrl()
         weekDates = generateWeekDates()
+        getEvents().then((data)=>{
+            console.log(data)
+        })
     })
 </script>
 
