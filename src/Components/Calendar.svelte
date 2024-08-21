@@ -26,7 +26,7 @@
             date.setDate(weekStart + i)
             week.push({
                 day: date.getDate(),
-                weekday: date.toLocaleDateString('en-US', { weekday: 'short' }),
+                weekday: date.toLocaleDateString('en-UK', { weekday: 'short' }),
                 dateStr: date.toISOString().slice(0, 10) 
             });
         }
@@ -37,10 +37,7 @@
     onMount(() => {
         selectedDay = getSelectedDayFromUrl()
         weekDates = generateWeekDates()
-        getEvents().then((data)=>{
-            console.log(data)
         })
-    })
 </script>
 
 <style>

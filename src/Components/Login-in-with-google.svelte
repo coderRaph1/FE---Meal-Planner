@@ -35,6 +35,8 @@
 	}
 </script>
 
-<h1>Login</h1>
 
-<button on:click={handleClick}>Sign Up!</button>
+  <div class="container">
+	<h1>Login</h1>
+	<button on:click={handleClick}>Sign Up!</button>
+  </div>
