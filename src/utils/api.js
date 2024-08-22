@@ -1,0 +1,48 @@
+import axios from 'axios';
+
+const api = axios.create({
+	baseURL: 'https://www.themealdb.com/api/json/v1/1/',
+	timeout: 1000
+});
+
+export function getMeals() {
+	return api.get('/random.php').then(({ data }) => {
+		return data.meals[0];
+	});
+}
+
+export function getCategories() {
+	return api
+		.get('/categories.php')
+		.then(({ data }) => {
+			return data.categories;
+		})
+		.catch((error) => {
+			console.error('Error fetching categories:', error);
+		});
+}
+
+export function getMealsByCategory(category) {
+	return api
+		.get(`/filter.php?c=${category}`)
+		.then(({ data }) => {
+			console.log(data.meals);
+
+			return data.meals;
+		})
+		.catch((error) => {
+			console.error('Error fetching meals by category', error);
+		});
+}
+
+export function getMealById(idMeal) {
+	return api
+		.get(`/lookup.php?i=${idMeal}`)
+		.then(({ data }) => {
+			return data.meals;
+		})
+		.catch((error) => {
+			console.error('Error fetching meal by ID:', error);
+			throw error;
+		});
+}
