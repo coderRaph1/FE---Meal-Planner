@@ -15,8 +15,6 @@
 		signInWithPopup(auth, new GoogleAuthProvider())
 			.then((result) => {
 				console.log('Successfully signed in:', result.user);
-				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
-
 				return result.user;
 			})
 			.then((user) => {
@@ -35,6 +33,7 @@
 			.then((user) => {
 			  const {user_id} = user
 			  //set it in store
+			  goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
 			})
 			.catch((error) => {
 				console.error('Error signing in:', error);
