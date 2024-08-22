@@ -1,12 +1,15 @@
 <script>
-	import { firebaseConfig, app, db } from '../firebase.config';
+	import { db, auth } from '../firebase.config';
 	import { goto } from '$app/navigation';
 	import { getFirestore } from 'firebase/firestore';
 	import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 	import { doc, setDoc } from 'firebase/firestore';
+	import {postUser} from "../api.js"
+	// const user = auth.currentUser;
+	// const user_id = user.uid
 
-	const auth = getAuth();
-	const users = auth.currentUser;
+
+
 
 	function handleClick() {
 		signInWithPopup(auth, new GoogleAuthProvider())
@@ -16,18 +19,22 @@
 
 				return result.user;
 			})
-			.then((res) => {
-				console.log(res, 'this is the rizz');
-				const splitName = res.displayName.split(' ');
-				const firstName = splitName[0];
-				const lastName = splitName[1];
-				setDoc(doc(db, 'users', res.email), {
-					first_name: firstName,
-					last_name: lastName,
-					username: res.displayName,
-					email: res.email,
-					avatarURL: res.photoURL
-				});
+			.then((user) => {
+				
+				const avatarURL = user.photoURL
+				const user_id = user.uid 
+				const { displayName } = user
+				const splitName = displayName.split(' ');
+				const first_name = splitName[0];
+				const last_name = splitName[1];
+				const userBody = {
+					user_id, first_name, last_name, displayName, avatarURL
+				}
+				return postUser(userBody)
+			})
+			.then((user) => {
+			  const {user_id} = user
+			  //set it in store
 			})
 			.catch((error) => {
 				console.error('Error signing in:', error);
