@@ -4,37 +4,39 @@
 	import { getFirestore } from 'firebase/firestore';
 	import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 	import { doc, setDoc } from 'firebase/firestore';
-	import {postUser} from "../api.js"
+	import { postUser } from '../api.js';
+	import { userDetails } from '../stores';
 	// const user = auth.currentUser;
 	// const user_id = user.uid
-
-
-
 
 	function handleClick() {
 		signInWithPopup(auth, new GoogleAuthProvider())
 			.then((result) => {
 				console.log('Successfully signed in:', result.user);
-				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+				// Navigate to calendar after SUCCESSFUL sign-in
 
 				return result.user;
 			})
 			.then((user) => {
-				
-				const avatarURL = user.photoURL
-				const user_id = user.uid 
-				const { displayName } = user
+				const avatarURL = user.photoURL;
+				const user_id = user.uid;
+				const { displayName } = user;
 				const splitName = displayName.split(' ');
 				const first_name = splitName[0];
 				const last_name = splitName[1];
 				const userBody = {
-					user_id, first_name, last_name, displayName, avatarURL
-				}
-				return postUser(userBody)
+					user_id,
+					first_name,
+					last_name,
+					displayName,
+					avatarURL
+				};
+				return postUser(userBody);
 			})
 			.then((user) => {
-			  const {user_id} = user
-			  //set it in store
+				const { user_id } = user;
+				userDetails.update(() => user);
+				goto('/calendar');
 			})
 			.catch((error) => {
 				console.error('Error signing in:', error);
@@ -42,8 +44,7 @@
 	}
 </script>
 
-
-  <div class="container">
+<div class="container">
 	<h1>Login</h1>
 	<button on:click={handleClick}>Sign Up!</button>
-  </div>
+</div>
