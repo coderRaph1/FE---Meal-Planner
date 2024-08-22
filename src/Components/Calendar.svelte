@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
 	import AddMeal from './Add-meal.svelte';
+	import { getAuth, onAuthStateChanged } from 'firebase/auth';
+	import { auth } from '../firebase.config';
 
 	let selectedDay = null;
 	let weekDates = [];
@@ -32,7 +34,6 @@
 
 		return week;
 	}
-
 	onMount(() => {
 		selectedDay = getSelectedDayFromUrl();
 		weekDates = generateWeekDates();

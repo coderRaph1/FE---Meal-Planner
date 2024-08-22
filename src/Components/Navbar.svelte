@@ -1,3 +1,7 @@
+<script>
+	import { userDetails } from '../stores';
+</script>
+
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
 	<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
 		<a
@@ -20,17 +24,21 @@
 			>
 				<span class="sr-only">Open user menu</span>
 				<div class="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-					<svg
-						class="absolute -left-1 h-12 w-12 text-gray-400"
-						fill="currentColor"
-						viewBox="0 0 20 20"
-						xmlns="http://www.w3.org/2000/svg"
-						><path
-							fill-rule="evenodd"
-							d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-							clip-rule="evenodd"
-						></path>
-					</svg>
+					{#if $userDetails.user.avatarURL}
+						<img src={$userDetails.user.avatarURL} alt="your user pic" />
+					{:else}
+						<svg
+							class="absolute -left-1 h-12 w-12 text-gray-400"
+							fill="currentColor"
+							viewBox="0 0 20 20"
+							xmlns="http://www.w3.org/2000/svg"
+							><path
+								fill-rule="evenodd"
+								d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+								clip-rule="evenodd"
+							></path>
+						</svg>
+					{/if}
 				</div>
 			</button>
 			<!-- Dropdown menu -->
