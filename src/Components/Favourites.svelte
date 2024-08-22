@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
 	import { getMealById } from "../utils/api";
+	import {MealCard} from "./MealCard.svelte"
 
-
-let meals = [],
-let error = null,
+let meals = []
+let error = null
 
 const favouriteMealIds = ['52772', '52768', '52767']
 

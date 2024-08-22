@@ -11,22 +11,19 @@
 			userRecipes = [...recipes];
 		});
 	});
-
-	const handleClick = () => {
-		goto('/recipes/create')
-		
-	};
 </script>
-<main class="h-dvh w-dvw flex flex-col">
 
+<main class="flex h-dvh w-dvw flex-col">
 	<h1 class="pt-4 text-center">My Recipes</h1>
-	<button class="w-fit self-center mb-2" on:click={handleClick}>Write a new recipe</button>
+	<button class="mb-2 w-fit self-center" on:click={() => goto('/recipes/create')}
+		>Write a new recipe</button
+	>
 	<div class="flex gap-2 self-center">
 		{#each userRecipes as recipe}
-		<section class="outline outline-1 p-2">
-			<p><strong>{recipe.recipe_name}</strong></p>
-			<p>{recipe.cook_time + recipe.prep_time} minutes</p>
-		</section>
+			<section class="p-2 outline outline-1" on:click={() => goto(`/recipes/${recipe.recipe_id}`)}>
+				<p><strong>{recipe.recipe_name}</strong></p>
+				<p>{recipe.cook_time + recipe.prep_time} minutes</p>
+			</section>
 		{/each}
 	</div>
 </main>
