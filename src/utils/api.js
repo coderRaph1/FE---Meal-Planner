@@ -38,3 +38,15 @@ export function getMealById(idMeal) {
 			throw error;
 		});
 }
+
+export function getMealsByName(searchQuery) {
+	return api
+		.get(`/search.php?s=${searchQuery}`)
+		.then(({ data }) => {
+			return data.meals;
+		})
+		.catch((error) => {
+			console.error('Error searching meals:', error);
+			throw error;
+		});
+}
