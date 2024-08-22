@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte'
 	import AddMeal from './Add-meal.svelte'
+	import IndividualRecipes from './Individual-recipes.svelte';
  
     let selectedDay = null
     let weekDates = [];
@@ -90,3 +91,4 @@
 
 
    <AddMeal/>
+   <IndividualRecipes/>

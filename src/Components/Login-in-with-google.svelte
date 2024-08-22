@@ -37,6 +37,7 @@
 
 
   <div class="container">
-	<h1>Login</h1>
-	<button on:click={handleClick}>Sign Up!</button>
+	<h1>Welcome to the Meal Planner</h1>
+	<h2>We take the work out of planning so you can focus on YOU!</h2>
+	<button on:click={handleClick}>Sign In with Google!</button>
   </div>
