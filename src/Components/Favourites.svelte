@@ -1,20 +1,22 @@
 <script>
-	import { onMount } from 'svelte';
-	import { getMealById } from '../utils/api';
+	import { onMount } from "svelte";
+	import { getMealById } from "../utils/api";
 	import MealCard from './MealCard.svelte';
-	let meals = [];
 
-	const favouriteMealIds = ['52772', '52768', '52767'];
+let meals = []
+let error = null
 
-	function fetchFavouriteMeals() {
-		Promise.all(favouriteMealIds.map((id) => getMealById(id)))
-			.then((mealsArray) => {
-				meals = mealsArray.map((mealData) => mealData[0]);
-			})
-			.catch((error) => {
-				console.error('Error fetching meals:', error);
-			});
-	}
+const favouriteMealIds = ['52772', '52768', '52767']
+
+function fetchFavouriteMeals(){
+    Promise.all(favouriteMealIds.map((id) => getMealById(id))).then((mealsArray) => {
+        meals = mealsArray.map(mealData => mealData[0])
+    })
+    .catch((err) => {
+        error = 'Failed to load favourite meals';
+        console.error('Error fetching meals:', err);
+        })
+}
 
 	onMount(() => {
 		fetchFavouriteMeals();
