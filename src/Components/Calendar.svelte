@@ -34,14 +34,10 @@
 
 		return week;
 	}
-
 	onMount(() => {
 		selectedDay = getSelectedDayFromUrl();
 		weekDates = generateWeekDates();
 	});
-
-	;
-	
 </script>
 
 <div id="calendar" class="calendar">

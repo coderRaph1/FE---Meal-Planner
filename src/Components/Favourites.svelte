@@ -1,32 +1,27 @@
 <script>
-	import { onMount } from "svelte";
-	import { getMealById } from "../utils/api";
+	import { onMount } from 'svelte';
+	import { getMealById } from '../utils/api';
+	import MealCard from './MealCard.svelte';
+	let meals = [];
 
+	const favouriteMealIds = ['52772', '52768', '52767'];
 
-let meals = [],
-let error = null,
+	function fetchFavouriteMeals() {
+		Promise.all(favouriteMealIds.map((id) => getMealById(id)))
+			.then((mealsArray) => {
+				meals = mealsArray.map((mealData) => mealData[0]);
+			})
+			.catch((error) => {
+				console.error('Error fetching meals:', error);
+			});
+	}
 
-const favouriteMealIds = ['52772', '52768', '52767']
-
-function fetchFavouriteMeals(){
-    Promise.all(favouriteMealIds.map((id) => getMealById(id))).then((mealsArray) => {
-        meals = mealsArray.map(mealData => mealData[0])
-    })
-    .catch((err) => {
-        error = 'Failed to load favourite meals';
-        console.error('Error fetching meals:', err);
-        })
-}
-
-onMount(() => {
-    fetchFavouriteMeals();
-})
+	onMount(() => {
+		fetchFavouriteMeals();
+	});
 </script>
 
-<h2 class="mb-4 text-3xl font-bold">Favorites</h2>
-{#if error}
-	<p class="text-red-500">{error}</p>
-{:else if meals.length > 0}
+{#if meals.length > 0}
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 		{#each meals as meal}
 			<MealCard idMeal={meal.idMeal} strMeal={meal.strMeal} strMealThumb={meal.strMealThumb} />
