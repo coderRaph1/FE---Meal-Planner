@@ -13,8 +13,6 @@
 		signInWithPopup(auth, new GoogleAuthProvider())
 			.then((result) => {
 				console.log('Successfully signed in:', result.user);
-				// Navigate to calendar after SUCCESSFUL sign-in
-
 				return result.user;
 			})
 			.then((user) => {
@@ -46,5 +44,4 @@
 
 <div class="container">
 	<h1>Login</h1>
-	<button on:click={handleClick}>Sign Up!</button>
 </div>
