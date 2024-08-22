@@ -5,12 +5,6 @@ const api = axios.create({
 	timeout: 1000
 });
 
-export function getMeals() {
-	return api.get('/random.php').then(({ data }) => {
-		return data.meals[0];
-	});
-}
-
 export function getCategories() {
 	return api
 		.get('/categories.php')
@@ -26,8 +20,6 @@ export function getMealsByCategory(category) {
 	return api
 		.get(`/filter.php?c=${category}`)
 		.then(({ data }) => {
-			console.log(data.meals);
-
 			return data.meals;
 		})
 		.catch((error) => {
