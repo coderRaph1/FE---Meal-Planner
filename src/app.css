@@ -2,62 +2,81 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.container{
+/* .container{
     gap:10px;
     padding:10px;
     overflow: hidden;
-}
+} */
+
 
 body {
-	margin: 0;
-	font-family: Arial, sans-serif;
-	background: linear-gradient(45deg, #ff6b6b, #f7d794, #55efc4, #00cec9);
-	background-size: 400% 400%;
-	animation: gradientShift 10s ease infinite;
-	color: rgb(0, 0, 0);
-}
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #ff6b6b, #f7d794, #55efc4, #00cec9);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    color: rgb(0, 0, 0); 
+  }
 
-.container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	text-align: center;
-}
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
 
-h1 {
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
-	animation: fadeIn 2s ease-out;
-}
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
 
-h1 {
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
-	animation: fadeIn 2s ease-out;
-}
+  h1 {
+      font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 2s ease-out;
+  }
 
-button:hover {
-	background-color: #e84393;
-	transform: scale(1.05);
-}
+  button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff6b6b;
+    color: white;
+    transition: background-color 0.3s, transform 0.3s;
+    }
 
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-.box {
-	display: flex;
-	flex-direction: row;
-	border: 1px solid red;
-	align-items: center;
-	justify-content: space-around;
-	width: 60%;
-}
+  button:hover {
+    background-color: #e84393;
+    transform: scale(1.05);
+    }
+    
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+    .box{
+        display: flex;
+        flex-direction: row;
+        border:1px solid red;
+        align-items: center;
+        justify-content: space-around;
+        width:60%;
+        
+    }
