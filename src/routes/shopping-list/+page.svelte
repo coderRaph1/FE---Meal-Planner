@@ -1,36 +1,38 @@
 <script>
 	import { onMount } from 'svelte';
 	import { userDetails } from '../../stores.js';
-	import { getListsForUser, postNewList } from '../../api.js';
+	import { getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
+	import Modal from "../../Components/Modal.svelte"
 
 	let userLists = [];
+	let showModal = false
 	onMount(() => {
 		getListsForUser($userDetails.user.user_id).then((data) => {
 			userLists = data.lists;
-			console.log(data, 'data');
-			console.log(userLists);
+			//console.log(data, 'data');
+			//console.log(userLists,'<<userlists');
 		});
 	});
+	
 
-	let list_name;
-	let isPrivate = false;
-	$: console.log(list_name, isPrivate);
-
-	function handleClick() {
-		postNewList(list_name, isPrivate).then((data) => {
-			console.log(data);
-		});
-	}
+	
 </script>
 
 <h1>My Lists</h1>
+<button
+	data-modal-target="default-modal"
+	data-modal-toggle="default-modal"
+	class="block rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+	type="button" on:click={() => showModal = !showModal}>Add a list</button
+>
 <ul>
 	{#each userLists as list}
 		<li>{list.list_name}</li>
 	{/each}
 </ul>
-<label for="newListName">List name</label>
+<!-- <label for="newListName">List name</label>
 <input type="text" id="newListName" bind:value={list_name} />
 <label for="isPrivate">Private</label>
 <input type="checkbox" bind:checked={isPrivate} />
-<button on:click={handleClick}>Add new List</button>
+<button on:click={handleClick}>Add new List</button> -->
+<Modal show={showModal} userLists={userLists}/>
