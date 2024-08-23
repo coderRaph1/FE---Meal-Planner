@@ -41,9 +41,39 @@
 				console.error('Error signing in:', error);
 			});
 	}
+
+	function handleClickLogin() {
+		signInWithPopup(auth, new GoogleAuthProvider())
+			.then((result) => {
+				console.log('Successfully signed in:', result.user);
+				const user = result.user;
+				const avatarURL = user.photoURL;
+				const user_id = user.uid;
+				const { displayName } = user;
+				const splitName = displayName.split(' ');
+				const first_name = splitName[0];
+				const last_name = splitName[1];
+				const userBody = {
+					user_id,
+					first_name,
+					last_name,
+					displayName,
+					avatarURL
+				};
+				userDetails.update(() => {
+					return { user: userBody };
+				});
+				console.log($userDetails);
+				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+			})
+			.catch((error) => {
+				console.error('Error signing in:', error);
+			});
+	}
 </script>
 
 <div class="container">
 	<h1>Login</h1>
 	<button on:click={handleClick}>Sign Up!</button>
+	<button on:click={handleClickLogin}>Login</button>
 </div>

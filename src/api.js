@@ -42,3 +42,27 @@ export function postItem(list_id, item_name, amount) {
 export function deleteItem(list_id, index) {
 	return apiClient.delete(`lists/${list_id}/${index}`);
 }
+
+export const getUserRecipes = (user_id) => {
+	return apiClient.get(`/users/${user_id}/recipes`).then(({ data }) => {
+		return data;
+	});
+};
+
+export const postRecipe = (user_id, recipe) => {
+	return apiClient.post(`/users/${user_id}/recipes`, recipe).then(({ data }) => {
+		return data;
+	});
+};
+
+export const getListsForUser = (user_id) => {
+	return apiClient.get(`/users/${user_id}/lists`).then(({ data }) => {
+		return data;
+	});
+};
+
+export const postNewList = (list_name, isPrivate) => {
+	return apiClient.post(`/lists`, { list_name, isPrivate }).then(({ data }) => {
+		return data;
+	});
+};

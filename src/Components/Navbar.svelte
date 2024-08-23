@@ -1,5 +1,6 @@
 <script>
 	import { userDetails } from '../stores';
+	console.log($userDetails);
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
@@ -103,16 +104,9 @@
 			>
 				<li>
 					<a
-						href="/"
-						class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
-						aria-current="page">Home</a
-					>
-				</li>
-				<li>
-					<a
 						href="/calendar"
-						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-						>My Calendar</a
+						class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
+						aria-current="page">My Calendar</a
 					>
 				</li>
 				<li>
