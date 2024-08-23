@@ -13,10 +13,10 @@
 			meals = fetchedMeals;
 		});
 	}
-	onMount(() => {
-		fetchMeals();
-	});
-	$: fetchMeals();
+	// onMount(() => {
+	// 	fetchMeals();
+	// });
+	// $: fetchMeals();
 </script>
 
 <h1>Meals in {category}</h1>

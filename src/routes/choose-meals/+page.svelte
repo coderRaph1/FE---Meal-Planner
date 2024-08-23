@@ -6,11 +6,11 @@
 </script>
 
 <Navbar />
-<Searchbar />
+<!-- <Searchbar /> -->
 <h1>Favourites</h1>
-<Favourites />
+<!-- <Favourites /> -->
 <h1>Categories</h1>
-<Categories />
+<!-- <Categories /> -->
 <h1>Recommendations</h1>
 <button
 	type="button"
