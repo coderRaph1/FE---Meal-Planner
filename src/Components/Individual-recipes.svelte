@@ -1,56 +1,118 @@
 <script>
-import {getMealById} from '../utils/api'
-getMealById()
-export let idMeal
-console.log(idMeal, '<<<< hello');
-</script>
+	import {  afterUpdate, onMount } from "svelte";
+    import { getMealById } from "../utils/api";
+    	import { page } from '$app/stores'
 
+    let currentPath = '/'
+	let mealData = {}
+  
+	$: currentPath = $page.url.pathname.split('/').filter(Boolean).pop() || '/'
 
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    
+    onMount(() => {
+	  getMealById(currentPath).then((data) => {
+		mealData = data[0]
+	
+	  });
+	});
+
+  </script>
+  
+  <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-        <img class="rounded-t-lg" src="" alt="Recipe Image" />
+      <img class="rounded-t-lg" src={mealData.strMealThumb} alt="Recipe Image" />
     </a>
     <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ingredients needed:</h5>
-        </a>
-        <ul class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            <li>
-                <label class="flex items-center">
-                    <input type="checkbox" class="mr-2">
-                    1 cup of sugar
-                </label>
-            </li>
-            <li>
-                <label class="flex items-center">
-                    <input type="checkbox" class="mr-2">
-                    2 cups of flour
-                </label>
-            </li>
-            <li>
-                <label class="flex items-center">
-                    <input type="checkbox" class="mr-2">
-                    1/2 cup of butter
-                </label>
-            </li>
-            <li>
-                <label class="flex items-center">
-                    <input type="checkbox" class="mr-2">
-                    3 eggs
-                </label>
-            </li>
-            <li>
-                <label class="flex items-center">
-                    <input type="checkbox" class="mr-2">
-                    half a pint of Syrup
-                </label>
-            </li>
-        </ul>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Add to shopping list
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Ingredients needed:</h5>
+      </a>
+      <ul class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <li>
+          <label class="flex items-center">
+            <input type="checkbox" class="mr-2">
+            {mealData.strIngredient1}
+          </label>
+        </li>
+        <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient2}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient3}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient4}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient5}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient6}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient7}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient8}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient9}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient10}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient11}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient12}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient13}
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center">
+              <input type="checkbox" class="mr-2">
+              {mealData.strIngredient14}
+            </label>
+          </li>
+      </ul>
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Instructions:</h5>
+      <p>{mealData.strInstructions}</p>
     </div>
-</div>
+  </div>

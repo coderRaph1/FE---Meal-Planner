@@ -12,13 +12,13 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #ff6b6b, #f7d794, #55efc4, #00cec9);
+    background: linear-gradient(45deg, #6b93ff, #94f7f2, #55efc4, #00cec9);
     background-size: 400% 400%;
-    animation: gradientShift 10s ease infinite;
+    /* animation: gradientShift 10s ease infinite; */
     color: rgb(0, 0, 0); 
   }
 
-  @keyframes gradientShift {
+  /* @keyframes gradientShift {
     0% {
       background-position: 0% 0%;
     }
@@ -28,7 +28,7 @@ body {
     100% {
       background-position: 0% 0%;
     }
-  }
+  } */
 
   .container {
     display: flex;

@@ -17,9 +17,7 @@ export function getCategories() {
 }
 
 export function getMealsByCategory(category) {
-	console.log(category, 'hellooooooo');
 	return api
-
 		.get(`/filter.php?c=${category}`)
 		.then(({ data }) => {
 			return data.meals;
@@ -33,6 +31,7 @@ export function getMealById(idMeal) {
 	return api
 		.get(`/lookup.php?i=${idMeal}`)
 		.then(({ data }) => {
+		
 			return data.meals;
 		})
 		.catch((error) => {
@@ -51,4 +50,8 @@ export function getMealsByName(searchQuery) {
 			console.error('Error searching meals:', error);
 			throw error;
 		});
+}
+
+export function getIndividualMeals(){
+	return 'hello'
 }
