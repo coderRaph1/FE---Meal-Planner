@@ -1,10 +1,10 @@
 <script>
 	import { onMount } from "svelte";
 	import { getMealById } from "../utils/api";
+	import {MealCard} from "./MealCard.svelte"
 
-
-let meals = [],
-let error = null,
+let meals = []
+let error = null
 
 const favouriteMealIds = ['52772', '52768', '52767']
 
@@ -18,15 +18,12 @@ function fetchFavouriteMeals(){
         })
 }
 
-onMount(() => {
-    fetchFavouriteMeals();
-})
+	onMount(() => {
+		fetchFavouriteMeals();
+	});
 </script>
 
-<h2 class="mb-4 text-3xl font-bold">Favorites</h2>
-{#if error}
-	<p class="text-red-500">{error}</p>
-{:else if meals.length > 0}
+{#if meals.length > 0}
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 		{#each meals as meal}
 			<MealCard idMeal={meal.idMeal} strMeal={meal.strMeal} strMealThumb={meal.strMealThumb} />
