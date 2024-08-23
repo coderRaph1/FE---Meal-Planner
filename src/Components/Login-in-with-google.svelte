@@ -35,7 +35,7 @@
 				const { user_id } = user;
 				//set it in store
 				userDetails.update(() => user);
-				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+				goto('/calendar'); // SUCCESSFUL sign-in
 			})
 			.catch((error) => {
 				if (error.response.data.user) {
@@ -49,7 +49,7 @@
 </script>
 
   <div class="container">
-	<h1>Welcome to the Meal Planner</h1>
+	<h1>Welcome to Daily Dish</h1>
 	<h2>We take the work out of planning so you can focus on YOU!</h2>
 	<button on:click={handleClick}>Sign In with Google!</button>
   </div>
