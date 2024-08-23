@@ -32,13 +32,12 @@
 				return postUser(userBody);
 			})
 			.then((user) => {
-				
 				const { user_id } = user;
 				//set it in store
 				userDetails.update(() => user);
 				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
 			})
-			.catch((error) => {				
+			.catch((error) => {
 				if (error.response.data.user) {
 					userDetails.update(() => error.response.data);
 					goto('/calendar');

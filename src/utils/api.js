@@ -17,7 +17,9 @@ export function getCategories() {
 }
 
 export function getMealsByCategory(category) {
+	console.log(category, 'hellooooooo');
 	return api
+
 		.get(`/filter.php?c=${category}`)
 		.then(({ data }) => {
 			return data.meals;
