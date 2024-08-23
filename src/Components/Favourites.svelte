@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import { getMealById } from "../utils/api";
-	import MealCard from './MealCard.svelte';
+	import {MealCard} from "./MealCard.svelte"
 
 let meals = []
 let error = null
