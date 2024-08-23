@@ -20,10 +20,10 @@
 	>
 	<div class="flex gap-2 self-center">
 		{#each userRecipes as recipe}
-			<section class="p-2 outline outline-1" on:click={() => goto(`/recipes/${recipe.recipe_id}`)}>
-				<p><strong>{recipe.recipe_name}</strong></p>
-				<p>{recipe.cook_time + recipe.prep_time} minutes</p>
-			</section>
+			<button type="button" class="p-2 outline outline-1" on:click={() => goto(`/recipes/${recipe.recipe_id}`)}>	
+					<p><strong>{recipe.recipe_name}</strong></p>
+					<p>{recipe.cook_time + recipe.prep_time} minutes</p>
+			</button>
 		{/each}
 	</div>
 </main>

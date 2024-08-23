@@ -2,6 +2,7 @@
 	import { postRecipe } from '../../../api.js';
 	import { userDetails } from '../../../stores.js';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	let cook_time = 10;
 	let prep_time = 15;
 	let recipe_name = '';
@@ -10,6 +11,9 @@
 	$: ingredients = [];
 	$: instructions = [];
 	$: submitted = false;
+	onMount(() => {
+	  console.log("hello", $userDetails.user.user_id)
+	})
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		submitted = true;
@@ -50,7 +54,7 @@
 	};
 </script>
 
-<main class="flex h-dvh w-dvw flex-col items-center">
+<main class="flex h-dvh w-dvw flex-col items-center" >
 	<h1 class="pt-4 text-center">Create a new recipe</h1>
 	<form class="flex w-1/2 flex-col items-center gap-2" on:submit={handleSubmit}>
 		<label class="flex w-full justify-between" for="recipe-name"
