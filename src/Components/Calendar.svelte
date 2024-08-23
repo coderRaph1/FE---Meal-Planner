@@ -9,7 +9,6 @@
 
 	function getSelectedDayFromUrl() {
 		const urlParams = new URLSearchParams(window.location.search);
-		console.log(window);
 		return urlParams.get('selectedDay');
 	}
 

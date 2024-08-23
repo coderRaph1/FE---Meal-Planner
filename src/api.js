@@ -11,3 +11,20 @@ export const postUser = (user) => {
       return data
     })
   }
+  export const postNewList = (user_id,newList) =>{
+    console.log(user_id,'<<in post',newList)
+    return apiClient.post(`/users/${user_id}/lists`,newList).then(({data}) => {
+      console.log(data,'<<<data post')
+     return data.user
+    }).catch((err)=>{
+        console.log(err)
+    })
+}
+
+export const getLists = (user_id) => {
+ // console.log(user_id,'<<in get')
+    return apiClient.get(`/users/${user_id}`).then(({data}) =>{
+      console.log(data,'<<in get lists')
+        return data
+    })
+  }

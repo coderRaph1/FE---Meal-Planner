@@ -12,10 +12,11 @@
 	function handleClick() {
 		signInWithPopup(auth, new GoogleAuthProvider())
 			.then((result) => {
-				console.log('Successfully signed in:', result.user);
+				// /console.log('Successfully signed in:', result.user);
 				return result.user;
 			})
 			.then((user) => {
+				
 				const avatarURL = user.photoURL;
 				const user_id = user.uid;
 				const { displayName } = user;
@@ -35,7 +36,8 @@
 				const { user_id } = user;
 				//set it in store
 				userDetails.update(() => user);
-				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in
+				
+				goto('/calendar'); // Navigate to calendar after SUCCESSFUL sign-in. If broken then move to first then block.
 			})
 			.catch((error) => {
 				console.error('Error signing in:', error);
