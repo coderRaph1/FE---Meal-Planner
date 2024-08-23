@@ -67,6 +67,12 @@ export const postNewList = (list_name, isPrivate) => {
 	});
 };
 
+export const postNewListByUSerId = (list_id, user_id) => {
+	return apiClient.post(`/users/${user_id}/lists`, {list_id}).then(({ data }) => {
+		return data;
+	});
+};
+
 export const getRecipeById = (recipe_id) => {
 	return apiClient.get(`/recipes/${recipe_id}`).then(({ data }) => {
 		return data;
