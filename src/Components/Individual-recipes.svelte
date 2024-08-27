@@ -26,11 +26,15 @@
   });
 
   function getIngredients(meal) {
-    return Object.keys(meal)
-      .filter(key => key.startsWith('strIngredient') && meal[key])
-      .map(key => meal[key]);
-  }
-
+  return Object.keys(meal)
+    .filter(key => key.startsWith('strIngredient') && meal[key])
+    .map(key => {
+      const ingredientNumber = key.replace('strIngredient', '')
+      const measureKey = `strMeasure${ingredientNumber}`
+      const measure = meal[measureKey] || ''
+      return `${measure} ${meal[key]}`.trim()
+    });
+}
   function handleCheckboxChange(event, ingredient) {
     if (event.target.checked) {
       selectedIngredients.push(ingredient);
