@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { getMealById } from '../utils/api';
 	import MealCard from './MealCard.svelte';
+
 	let meals = [];
 
 	const favouriteMealIds = ['52772', '52768', '52767'];
@@ -22,10 +23,14 @@
 </script>
 
 {#if meals.length > 0}
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each meals as meal}
-			<MealCard idMeal={meal.idMeal} strMeal={meal.strMeal} strMealThumb={meal.strMealThumb} />
-		{/each}
+	<div class="hide-scroll-bar flex overflow-x-scroll pb-4">
+		<div class="flex flex-nowrap">
+			{#each meals as meal}
+				<div class="flex min-w-40 flex-row flex-wrap px-1">
+					<MealCard idMeal={meal.idMeal} strMeal={meal.strMeal} strMealThumb={meal.strMealThumb} />
+				</div>
+			{/each}
+		</div>
 	</div>
 {:else}
 	<p>Loading favorite meals...</p>
