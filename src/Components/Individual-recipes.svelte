@@ -1,8 +1,4 @@
 <script>
-  //ADD HREF FOR ADD TO SHOPPING LIST
-  //<div class="flex justify-center items-center min-h-screen bg-gray-100">
-  //<div class="w-full max-w-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-  //Removes the scroll thing
 
   import { onMount } from "svelte";
   import { getMealById } from "../utils/api";
