@@ -102,7 +102,7 @@
         </svg>
       </button>
       {#if loading}<p>Loading...</p> 
-      {:else if confirmed} <p>Item/Items Added</p> 
+      {:else if confirmed} <p>Your Shopping List has been Updated</p> 
       {/if}
     </div>
   </div>
