@@ -38,6 +38,7 @@
 				goto('/calendar'); // SUCCESSFUL sign-in
 			})
 			.catch((error) => {
+				console.log('hihi');
 				if (error.response.data.user) {
 					userDetails.update(() => error.response.data);
 					goto('/calendar');
@@ -48,8 +49,8 @@
 	}
 </script>
 
-  <div class="container">
+<div class="container">
 	<h1>Welcome to Daily Dish</h1>
 	<h2>We take the work out of planning so you can focus on YOU!</h2>
 	<button on:click={handleClick}>Sign In with Google!</button>
-  </div>
+</div>
