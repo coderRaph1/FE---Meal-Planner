@@ -34,7 +34,7 @@ export function getUserById(user_id) {
 }
 
 export function postItem(list_id, item_name, amount) {
-	return apiClient.post(`list/${list_id}`, { item_name, amount }).then(({ data }) => {
+	return apiClient.post(`lists/${list_id}`, { item_name, amount }).then(({ data }) => {
 		return data;
 	});
 }

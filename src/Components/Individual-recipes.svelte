@@ -7,17 +7,26 @@
   import { onMount } from "svelte";
   import { getMealById } from "../utils/api";
   import { page } from '$app/stores';
+	import { getListsForUser, postItem } from "../api";
+	import { userDetails, userLists } from "../stores";
 
   let currentPath = '/';
   let mealData = {};
   let selectedIngredients = [];
 
   $: currentPath = $page.url.pathname.split('/').filter(Boolean).pop() || '/';
+  
+  let usersList = []
 
   onMount(() => {
     getMealById(currentPath).then((data) => {
       mealData = data[0];
-    });
+      console.log($userDetails, 'user details');
+      return getListsForUser($userDetails.user.user_id)
+    }).then((data) => {
+      usersList = data.lists
+      console.log(usersList, 'the different lists available');
+    })
   });
 
   function getIngredients(meal) {
@@ -34,23 +43,28 @@
     }
   }
 
-  function addToShoppingList() {
-    fetch(`/api/lists/${list_id}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ items: selectedIngredients }),
+  function addToShoppingList(){
+
+    loading = true
+
+    selectedIngredients.map((itemName) => {
+      console.log(selectedList, 'selected list')
+      return postItem(selectedList, itemName, 1)
+      .then(() => {
+        loading = false
+        confirmed = true
+      })
     })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = '/' //NEEDS HREF!!
-      }
-    })
-    .catch(error => {
-      console.log('Error:', error);
-    });
+    
+    console.log(selectedIngredients, 'items in the checked-box array')
   }
+
+  let selectedList 
+  $: console.log(selectedList)
+
+  let loading = false
+  let confirmed = false
+
 
 </script>
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
@@ -72,7 +86,13 @@
           </li>
         {/each}
       </ul>
+      <form>
+        <label for="list-name">Choose a list to add items to:</label>
+        <select id='list-name' bind:value={selectedList}>
+         {#each usersList as listItem} <option value={listItem.list_id}>{listItem.list_name}</option>{/each}
 
+        </select>
+      </form>
       <h5 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Instructions:</h5>
       <p class="mb-8 font-normal text-lg text-gray-700 dark:text-gray-400">
         {mealData.strInstructions}
@@ -85,6 +105,9 @@
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
       </button>
+      {#if loading}<p>Loading...</p> 
+      {:else if confirmed} <p>Item/Items Added</p> 
+      {/if}
     </div>
   </div>
 </div>
