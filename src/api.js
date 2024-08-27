@@ -34,7 +34,7 @@ export function getUserById(user_id) {
 }
 
 export function postItem(list_id, item_name, amount) {
-	return apiClient.post(`lists/${list_id}`, { item_name, amount }).then(({ data }) => {
+	return apiClient.post(`list/${list_id}`, { item_name, amount }).then(({ data }) => {
 		return data;
 	});
 }
@@ -80,8 +80,7 @@ export const getRecipeById = (recipe_id) => {
 };
 
 export const patchRecipe = (recipe_id, patchInfo) => {
-  return apiClient.patch(`/recipes/${recipe_id}`, patchInfo)
-  .then(({data}) => {
-	return data
-  })
-}
+	return apiClient.patch(`/recipes/${recipe_id}`, patchInfo).then(({ data }) => {
+		return data;
+	});
+};
