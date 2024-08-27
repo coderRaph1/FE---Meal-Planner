@@ -4,4 +4,6 @@
 </script>
 
 <Navbar />
-<Calendar />
+<main class="p-2">
+	<Calendar />
+</main>

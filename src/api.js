@@ -75,6 +75,7 @@ export const postNewListByUSerId = (list_id, user_id) => {
 
 export const getRecipeById = (recipe_id) => {
 	return apiClient.get(`/recipes/${recipe_id}`).then(({ data }) => {
+		console.log(data);
 		return data;
 	});
 };

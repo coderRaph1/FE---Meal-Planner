@@ -1,6 +1,5 @@
 <script>
 	import { goto } from '$app/navigation';
-	import MealCard from './MealCard.svelte';
 
 	let searchQuery = '';
 

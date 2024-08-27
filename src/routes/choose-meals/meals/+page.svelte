@@ -39,7 +39,7 @@
 </script>
 
 <Navbar />
-<h2 class="mb-4 text-3xl font-bold">
+<h2 class="my-2 text-2xl font-semibold text-center">
 	{#if searchQuery}
 		Search Results for "{searchQuery}"
 	{:else if categoryQuery}
@@ -50,11 +50,12 @@
 {#if error}
 	<p class="text-red-500">{error}</p>
 {:else if meals.length > 0}
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+	<main class="w-dvw h-dvh grid grid-cols-2 gap-2 p-2">
 		{#each meals as meal}
 			<MealCard idMeal={meal.idMeal} strMeal={meal.strMeal} strMealThumb={meal.strMealThumb} />
 		{/each}
-	</div>
+		<div class="w-full h-1"></div>
+	</main>
 {:else if searchQuery || categoryQuery}
 	<p>Loading meals...</p>
 {:else}
