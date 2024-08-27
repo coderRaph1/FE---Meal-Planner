@@ -1,6 +1,6 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { userDetails } from '../stores';
+	import { userDetails, userLists } from '../stores';
 	import { postNewList, postNewListByUSerId } from '../../src/api';
 	import Categories from './Categories.svelte';
 	//let savestore = false;
@@ -23,11 +23,12 @@
 	let isPrivate = false;
 	let addPeople;
 	let showModal = false;
-	export let userLists;
+
 	export let show = true;
 	const close = (e) => {
 		e.preventDefault();
-    userLists = [...userLists, list_name];
+		console.log(list_name);
+		userLists.update(() => [...$userLists, { list_name }]);
 		// /console.log(list_name, '<<list name');
 		postNewList(list_name, isPrivate)
 			.then((data) => {
@@ -35,15 +36,15 @@
 				return postNewListByUSerId(data.list.list_id, $userDetails.user.user_id);
 			})
 			.then((response) => {
-        console.log(userLists,'<<user lists')
-				return userLists ;
+				console.log($userLists, '<<user lists');
+				return $userLists;
 			});
 		show = false;
 		dispatch('close');
 	};
 	const handleClose = () => {
 		//console.log('inside handle');
-		
+
 		showModal = false;
 	};
 </script>
@@ -71,18 +72,7 @@
 					required
 				/>
 			</fieldset>
-			<fieldset class="mb-5">
-				<label for="add-people" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-					>Add people</label
-				>
-				<input
-					type="text"
-					id="add-people"
-					class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-					required
-					bind:value={addPeople}
-				/>
-			</fieldset>
+
 			<fieldset class="mb-5 flex items-start">
 				<section class="flex h-5 items-center">
 					<input
