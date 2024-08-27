@@ -4,4 +4,4 @@ export const userDetails = writable({ user: {} });
 
 export const userLists = writable([]);
 
-export const showListItems = writable(null);
+export const listData = writable(null);

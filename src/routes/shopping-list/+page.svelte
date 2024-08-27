@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	import { userDetails, userLists } from '../../stores.js';
-	import { getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
+	import { listData, userDetails, userLists } from '../../stores.js';
+	import { getListById, getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
 	import Modal from '../../Components/Modal.svelte';
+	import ListItems from '../../Components/ListItems.svelte';
 
 	let showModal = false;
 	onMount(() => {
@@ -10,8 +11,15 @@
 			userLists.update(() => data.lists);
 		});
 	});
+
+	function handleClick(list_id) {
+		getListById(list_id).then((data) => {
+			listData.update(() => data.list);
+		});
+	}
 </script>
 
+<div></div>
 <h1>My Lists</h1>
 <button
 	data-modal-target="default-modal"
@@ -22,7 +30,12 @@
 >
 <ul>
 	{#each $userLists as list}
-		<button style="display: block;">{list.list_name}</button>
+		<button
+			style="display: block;"
+			on:click={() => {
+				handleClick(list.list_id);
+			}}>{list.list_name}</button
+		>
 	{/each}
 </ul>
 <!-- <label for="newListName">List name</label>
@@ -30,4 +43,7 @@
 <label for="isPrivate">Private</label>
 <input type="checkbox" bind:checked={isPrivate} />
 <button on:click={handleClick}>Add new List</button> -->
+{#if $listData}
+	<ListItems />
+{/if}
 <Modal show={showModal} />
