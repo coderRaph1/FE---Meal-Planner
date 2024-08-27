@@ -28,7 +28,10 @@
 	const close = (e) => {
 		e.preventDefault();
 		console.log(list_name);
-		userLists.update(() => [...$userLists, { list_name }]);
+		if (list_name) {
+			userLists.update(() => [...$userLists, { list_name }]);
+		}
+
 		// /console.log(list_name, '<<list name');
 		postNewList(list_name, isPrivate)
 			.then((data) => {

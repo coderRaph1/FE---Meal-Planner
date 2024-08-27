@@ -1,6 +1,5 @@
 <script>
 	import { userDetails } from '../stores';
-	console.log($userDetails);
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
