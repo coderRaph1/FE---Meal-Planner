@@ -1,5 +1,5 @@
 <script>
-	import { afterUpdate, beforeUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { userDetails, userLists } from '../../stores.js';
 	import { getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
 	import Modal from '../../Components/Modal.svelte';
@@ -30,4 +30,4 @@
 <label for="isPrivate">Private</label>
 <input type="checkbox" bind:checked={isPrivate} />
 <button on:click={handleClick}>Add new List</button> -->
-<Modal show={showModal} {userLists} />
+<Modal show={showModal} />
