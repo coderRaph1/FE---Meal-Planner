@@ -28,14 +28,17 @@
 	const close = (e) => {
 		e.preventDefault();
 		console.log(list_name);
+		const newListObj = {};
 		if (list_name) {
-			userLists.update(() => [...$userLists, { list_name }]);
+			newListObj.list_name = list_name;
+			userLists.update(() => [...$userLists, newListObj]);
 		}
 
 		// /console.log(list_name, '<<list name');
 		postNewList(list_name, isPrivate)
 			.then((data) => {
 				console.log(data.list.list_id, '>>>>', $userDetails.user.user_id);
+				newListObj.list_id = data.list.list_id;
 				return postNewListByUSerId(data.list.list_id, $userDetails.user.user_id);
 			})
 			.then((response) => {
