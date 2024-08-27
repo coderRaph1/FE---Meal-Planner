@@ -1,20 +1,13 @@
 <script>
 	import { afterUpdate, beforeUpdate, onMount } from 'svelte';
-	import { userDetails } from '../../stores.js';
+	import { userDetails, userLists } from '../../stores.js';
 	import { getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
 	import Modal from '../../Components/Modal.svelte';
 
-	let userLists = [];
-
 	let showModal = false;
-	beforeUpdate(() => {
+	onMount(() => {
 		getListsForUser($userDetails.user.user_id).then((data) => {
-			userLists = data.lists;
-		});
-	});
-	afterUpdate(() => {
-		getListsForUser($userDetails.user.user_id).then((data) => {
-			userLists = data.lists;
+			userLists.update(() => data.lists);
 		});
 	});
 </script>
@@ -28,7 +21,7 @@
 	on:click={() => (showModal = !showModal)}>Add a list</button
 >
 <ul>
-	{#each userLists as list}
+	{#each $userLists as list}
 		<button style="display: block;">{list.list_name}</button>
 	{/each}
 </ul>
