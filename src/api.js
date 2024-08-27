@@ -78,3 +78,10 @@ export const getRecipeById = (recipe_id) => {
 		return data;
 	});
 };
+
+export const patchRecipe = (recipe_id, patchInfo) => {
+  return apiClient.patch(`/recipes/${recipe_id}`, patchInfo)
+  .then(({data}) => {
+	return data
+  })
+}
