@@ -31,3 +31,4 @@
 		<p>Loading meals...</p>
 	{/if}
 </div>
+
