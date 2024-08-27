@@ -69,6 +69,7 @@
 </script>
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
   <div class="w-full max-w-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <h1>{mealData.strMeal}</h1>
 <a href="#" class="w-full">
       <img class="w-full h-1/3 object-cover rounded-t-lg" src={mealData.strMealThumb} alt="Recipe Image" />
     </a>
