@@ -8,7 +8,7 @@
 	onMount(() => {
 		getCategories().then((fetchedCategories) => {
 			categories = fetchedCategories;
-			console.log(categories);
+			
 			
 		});
 	});
