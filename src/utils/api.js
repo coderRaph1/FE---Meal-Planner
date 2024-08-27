@@ -31,9 +31,7 @@ export function getMealById(idMeal) {
 	return api
 		.get(`/lookup.php?i=${idMeal}`)
 		.then(({ data }) => {
-		
-			console.log(data.meals)
-			return data.meals
+			return data.meals;
 		})
 		.catch((error) => {
 			console.error('Error fetching meal by ID:', error);
