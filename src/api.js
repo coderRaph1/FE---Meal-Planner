@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-	baseURL: 'https://meal-planner-event-handlers-99c1a26e1dcf.herokuapp.com/api'
+	baseURL: 'https://event-handlers-meal-planner-be.onrender.com/api'
 });
 
 export const postUser = (user) => {
@@ -68,7 +68,7 @@ export const postNewList = (list_name, isPrivate) => {
 };
 
 export const postNewListByUSerId = (list_id, user_id) => {
-	return apiClient.post(`/users/${user_id}/lists`, {list_id}).then(({ data }) => {
+	return apiClient.post(`/users/${user_id}/lists`, { list_id }).then(({ data }) => {
 		return data;
 	});
 };
