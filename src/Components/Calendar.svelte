@@ -1,8 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
 	import AddMeal from './Add-meal.svelte';
-	import { getAuth, onAuthStateChanged } from 'firebase/auth';
-	import { auth } from '../firebase.config';
 
 	let selectedDay = null;
 	let weekDates = [];
@@ -39,30 +37,29 @@
 	});
 </script>
 
-<div id="calendar" class="calendar">
+<ul id="calendar" class="grid grid-cols-7 p-2 ">
 	{#each weekDates as date}
-		<div
-			id="day-{date.day}"
-			class="day {selectedDay === date.dateStr ? 'selected' : ''}"
-			on:click={() => selectDay(date.dateStr)}
-		>
-			<p>{date.weekday}</p>
-			<p>{date.day}</p>
-		</div>
+		<li id="day-{date.day}"	class="outline active:bg-purple-500 ">
+			<button type="button" class="text-sm p-2 rounded-none text-center {selectedDay === date.dateStr ? 'bg-purple-700' : 'bg-purple-400'}" on:click={() => selectDay(date.dateStr)}>
+				{date.weekday}
+				{date.day}</button>
+		</li>
 	{/each}
-</div>
+</ul>
 
 <AddMeal />
 
 <style>
-	.calendar {
+	/* day {selectedDay === date.dateStr ? 'selected' : ''} */
+
+	/* .calendar {
 		display: flex;
 		justify-content: center;
 		gap: 8px;
 		margin-top: 20px;
 		flex-wrap: wrap;
-	}
-
+	} */
+/* 
 	.day {
 		cursor: pointer;
 		transition: all 0.3s;
@@ -83,11 +80,11 @@
 	.day:hover {
 		background-color: #6b46c1;
 		color: #f7fafc;
-	}
+	} */
 
-	@media (max-width: 600px) {
+	/* @media (max-width: 600px) {
 		.day {
 			width: 50px;
 		}
-	}
+	} */
 </style>
