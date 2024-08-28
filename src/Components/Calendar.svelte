@@ -37,7 +37,7 @@
 	});
 </script>
 
-<ul id="calendar" class="grid grid-cols-7 p-2 ">
+<ul id="calendar" class="grid grid-cols-7 p-7 ">
 	{#each weekDates as date}
 		<li id="day-{date.day}"	class="outline active:bg-purple-500 ">
 			<button type="button" class="text-sm p-2 rounded-none text-center {selectedDay === date.dateStr ? 'bg-purple-700' : 'bg-purple-400'}" on:click={() => selectDay(date.dateStr)}>

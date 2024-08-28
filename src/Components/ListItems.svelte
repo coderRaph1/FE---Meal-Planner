@@ -62,17 +62,32 @@
 {/if}
 <button on:click={handleEditClick}>Edit Items</button>
 <ul>
-	{#each $listData.list as item, index}
-		<li>{item.amount} x {item.item_name}</li>
-		<button class={showEdit} on:click={handleDelete(index)}>Delete Item</button>
-	{/each}
+	<div class="max-w-fit">
+		{#each $listData.list as item, index}
+			<section
+				class="mt-4 flex flex-row rounded-lg  justify-between border border-gray-200 bg-white p-4 shadow sm:p-8 md:w-32 lg:w-96 dark:border-gray-700 dark:bg-gray-800"
+			>
+				<li>{item.amount} x {item.item_name}</li>
+				<button
+					class="bg-gradient-to-trpx-4 mb-2 self-center rounded-md py-2 outline {showEdit}"
+					on:click={handleDelete(index)}>Delete Item</button
+				>
+			</section>
+		{/each}
+	</div>
 </ul>
+
 <form class={showEdit}>
-	<label for="new-Item">Item Name</label>
-	<input type="text" id="new-Item" bind:value={item_name} />
-	<label for="amount">amount</label>
-	<input type="number" id="amount" bind:value={amount} />
-	<button on:click={handleClick}>Add item</button>
+	<section
+		class="mt-4 flex-col w-full flex place-items-center gap-3 rounded-lg border outline-offset-1 border-gray-200 p-4 shadow sm:p-8 dark:border-gray-700 dark:bg-gray-800"
+	>
+		<label for="new-Item">Item Name</label>
+		<input type="text" id="new-Item" bind:value={item_name} />
+		<label for="amount">amount</label>
+		<input type="number" id="amount" bind:value={amount} />
+
+		<button on:click={handleClick}>Add item</button>
+	</section>
 </form>
 
 <style>
