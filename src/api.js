@@ -85,3 +85,8 @@ export const patchRecipe = (recipe_id, patchInfo) => {
 		return data;
 	});
 };
+
+export const deleteListFromAUser = (user_id, list_id) => {
+	console.log(list_id);
+	return apiClient.delete(`/users/${user_id}/lists`, { data: { list_id } });
+};
