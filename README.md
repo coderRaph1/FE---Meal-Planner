@@ -18,9 +18,9 @@
     <br />
     <a href="">View Demo</a>
     ·
-    <a href="https://github.com/coderRaph/FE---Meal-Planner/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/coderRaph1/FE---Meal-Planner/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/coderRaph/FE---Meal-Planner/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/coderRaph1/FE---Meal-Planner/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
@@ -129,8 +129,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ### Top contributors:
 
-<a href="https://github.com/coderRaph/FE---Meal-Planner/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=coderRaph/FE---Meal-Planner" alt="contrib.rocks image" />
+<a href="https://github.com/coderRaph1/FE---Meal-Planner/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=coderRaph1/FE---Meal-Planner" alt="contrib.rocks image" />
 </a>
 
 ## Acknowledgments
@@ -143,7 +143,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 [BE-repo-url]: https://github.com/nldblanch/event-handlers-meal-planner-BE
 [NC-url]: https://northcoders.com
-[contributors-shield]: https://img.shields.io/github/contributors/coderRaph/FE---Meal-Planner.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/coderRaph1/FE---Meal-Planner.svg?style=for-the-badge
 [contributors-url]: https://github.com/coderRaph1/FE---Meal-Planner/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathanblanch
