@@ -143,7 +143,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 [BE-repo-url]: https://github.com/nldblanch/event-handlers-meal-planner-BE
 [NC-url]: https://northcoders.com
-[contributors-shield]: https://img.shields.io/github/contributors/nldblanch/event-handlers-meal-planner-BE.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/coderRaph/FE---Meal-Planner.svg?style=for-the-badge
 [contributors-url]: https://github.com/coderRaph1/FE---Meal-Planner/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathanblanch
