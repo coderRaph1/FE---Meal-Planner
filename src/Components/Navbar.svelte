@@ -14,7 +14,7 @@
 			>
 		</a>
 		<div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-			<button
+			<button data-collapse-toggle="navbar-user"
 				type="button"
 				class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 md:me-0 dark:focus:ring-gray-600"
 				id="user-menu-button"
