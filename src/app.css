@@ -80,3 +80,15 @@ body {
         width:60%;
         
     }
+
+    .confirmation-message {
+      font-size: 1.25rem; 
+      color: #000000; 
+      font-weight: bold;
+      margin-top: 1rem;
+      text-align: center;
+  }
+  
+  .confirmation-message strong {
+      color: #23881a;
+  }
