@@ -11,7 +11,7 @@
 	}
 
 	function selectDay(day) {
-		window.location.href = `/calendar`;
+		window.location.href = `?selectedDay=${day}`;
 	}
 
 	function generateWeekDates() {
