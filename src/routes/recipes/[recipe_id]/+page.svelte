@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { getRecipeById, patchRecipe } from '../../../api';
 	import EditIcon from '../../../lib/assets/edit-icon.svelte';
+	import Navbar from "../../../Components/Navbar.svelte"
 	let currentPath = '/';
 	$: currentPath = $page.url.pathname.split('/').filter(Boolean).pop() || '/';
 	$: recipeInfo = {};
@@ -46,6 +47,7 @@
 	}
 </script>
 
+<Navbar />
 <main class=" h-dvh w-dvw items-center p-6">
 	{#if !editRecipe}
 		<h1 class="mb-2 text-3xl">{recipeInfo.recipe_name}</h1>
@@ -72,7 +74,7 @@
 	{/if}
 	{#if editRecipe}
 		<form class=" mx-0 p-0 flex flex-col" on:submit={submitEdit}>
-			<button class="outline w-fit px-4 py-1 self-center rounded-md mb-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="submit">Done</button>
+			<button class="outline outline-1 outline-black text-black w-fit px-4 py-1 self-center rounded-md mb-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="submit">Done</button>
 			<input class="text-3xl bg-inherit mb-2 outline-dashed bg-gradient-to-tr from-teal-200 to-teal-100" bind:value={recipeInfo.recipe_name} />
 			<div class=" bg-gradient-to-tr from-teal-200 to-teal-100 flex my-2 outline-dashed">
 				<input
@@ -103,16 +105,16 @@
 				{#each ingredients as ingredient}
 					<input class="px-2 my-2 text-md w-full list-disc bg-inherit outline-dashed bg-gradient-to-tr from-teal-200 to-teal-100" bind:value={ingredient} />
 				{/each}
-				<button class="outline w-fit px-4 py-1 self-center rounded-md mt-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="button" on:click={handleAddIngredient}>Add ingredient</button>
+				<button class="outline outline-1 outline-black text-black w-fit px-4 py-1 self-center rounded-md mt-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="button" on:click={handleAddIngredient}>Add ingredient</button>
 			</fieldset>
 			<fieldset class=" flex flex-col my-4">
 				<legend class="mb-2 mr-auto w-fit border-b border-black text-2xl">Instructions</legend>
 				{#each instructions as instruction}
 					<input class="px-2 my-2 text-md w-full list-decimal bg-inherit outline-dashed bg-gradient-to-tr from-teal-200 to-teal-100" bind:value={instruction} />
 					{/each}
-					<button class="outline w-fit px-4 py-1 self-center rounded-md mt-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="button" on:click={handleAddInstruction}>Add instruction</button>
+					<button class="outline outline-1 outline-black text-black w-fit px-4 py-1 self-center rounded-md mt-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="button" on:click={handleAddInstruction}>Add instruction</button>
 				</fieldset>
-			<button class="outline w-fit px-4 py-1 self-center rounded-md mb-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="submit">Done</button>
+			<button class="outline outline-1 outline-black text-black w-fit px-4 py-1 self-center rounded-md mb-4 bg-gradient-to-tr from-teal-200 to-teal-100" type="submit">Done</button>
 		</form>
 	{/if}
 </main>

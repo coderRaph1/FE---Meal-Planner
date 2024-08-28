@@ -4,7 +4,7 @@
 	import { getListById, getListsForUser, postNewList, postNewListByUSerId } from '../../api.js';
 	import Modal from '../../Components/Modal.svelte';
 	import ListItems from '../../Components/ListItems.svelte';
-
+	import Navbar from '../../Components/Navbar.svelte'
 	let showModal = false;
 	onMount(() => {
 		getListsForUser($userDetails.user.user_id).then((data) => {
@@ -18,7 +18,7 @@
 		});
 	}
 </script>
-
+<Navbar />
 <div></div>
 <h1>My Lists</h1>
 <button
