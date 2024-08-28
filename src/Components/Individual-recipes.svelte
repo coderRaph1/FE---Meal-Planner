@@ -8,6 +8,7 @@
 	let currentPath = '/';
 	let mealData = {};
 	let selectedIngredients = [];
+	$: instructions = [];
 
 	$: currentPath = $page.url.pathname.split('/').filter(Boolean).pop() || '/';
 
@@ -17,6 +18,12 @@
 		getMealById(currentPath)
 			.then((data) => {
 				mealData = data[0];
+				instructions = mealData.strInstructions.split('.');
+				instructions = instructions.map((instruction) => {
+					if (!instruction) return '';
+					else if (instruction[instruction.length - 1] === '!') return instruction;
+					else return instruction + '.';
+				});
 				console.log($userDetails, 'user details');
 				return getListsForUser($userDetails.user.user_id);
 			})
@@ -29,9 +36,13 @@
 	function getIngredients(meal) {
 		return Object.keys(meal)
 			.filter((key) => key.startsWith('strIngredient') && meal[key])
-			.map((key) => meal[key]);
+			.map((key) => {
+				const ingredientNumber = key.replace('strIngredient', '');
+				const measureKey = `strMeasure${ingredientNumber}`;
+				const measure = meal[measureKey] || '';
+				return `${measure} ${meal[key]}`.trim();
+			});
 	}
-
 	function handleCheckboxChange(event, ingredient) {
 		if (event.target.checked) {
 			selectedIngredients.push(ingredient);
@@ -42,17 +53,16 @@
 
 	function addToShoppingList() {
 		loading = true;
-		console.log(selectedList);
-		const promiseArr = selectedIngredients.map((itemName) => {
-			return postItem(selectedList, itemName, 1);
+
+		selectedIngredients.map((itemName) => {
+			console.log(selectedList, 'selected list');
+			return postItem(selectedList, itemName, 1).then(() => {
+				loading = false;
+				confirmed = true;
+			});
 		});
 
 		console.log(selectedIngredients, 'items in the checked-box array');
-		return Promise.all(promiseArr).then((data) => {
-			console.log(data);
-			loading = false;
-			confirmed = true;
-		});
 	}
 
 	let selectedList;
@@ -62,51 +72,37 @@
 	let confirmed = false;
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gray-100">
-	<div
-		class="w-full max-w-lg rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
-	>
-		<a href="#" class="w-full">
-			<img
-				class="h-1/3 w-full rounded-t-lg object-cover"
-				src={mealData.strMealThumb}
-				alt="Recipe Image"
-			/>
+<main class="h-dvh w-dvw">
+	<a href="#">
+		<img class="rounded-t-lg" src={mealData.strMealThumb} alt="final meal image" />
+	</a>
+	<h1>{mealData.strMeal}</h1>
+	<div class="p-5">
+		<a href="#">
+			<h5 class="mb-2 text-2xl font-medium tracking-tight">Ingredients needed:</h5>
 		</a>
-		<div class="flex-1 p-8">
-			<a href="#">
-				<h5 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-					Ingredients needed:
-				</h5>
-			</a>
-			<ul class="mb-8 text-lg font-normal text-gray-700 dark:text-gray-400">
-				{#each getIngredients(mealData) as ingredient}
-					<li>
-						<label class="flex items-center">
-							<input
-								type="checkbox"
-								class="mr-3"
-								on:change={(event) => handleCheckboxChange(event, ingredient)}
-							/>
-							{ingredient}
-						</label>
-					</li>
-				{/each}
-			</ul>
-			<form>
-				<label for="list-name">Choose a list to add items to:</label>
-				<select id="list-name" bind:value={selectedList}>
-					{#each usersList as listItem}
-						<option value={listItem.list_id}>{listItem.list_name}</option>{/each}
-				</select>
-			</form>
-			<h5 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-				Instructions:
-			</h5>
-			<p class="mb-8 text-lg font-normal text-gray-700 dark:text-gray-400">
-				{mealData.strInstructions}
-			</p>
-		</div>
+		<ul class="mb-3 grid grid-cols-2 gap-1 font-normal">
+			{#each getIngredients(mealData) as ingredient}
+				<li>
+					<label class="flex items-center">
+						<input
+							type="checkbox"
+							class="mr-2"
+							on:change={(event) => handleCheckboxChange(event, ingredient)}
+						/>
+						{ingredient}
+					</label>
+				</li>
+			{/each}
+		</ul>
+		<form>
+			<label for="list-name" style="font-size: 18px;">Choose a list to add items to:</label>
+			<select id="list-name" bind:value={selectedList}>
+				{#each usersList as listItem}
+					<option value={listItem.list_id}>{listItem.list_name}</option>{/each}
+			</select>
+		</form>
+
 		<div class="p-8">
 			<button
 				type="button"
@@ -135,5 +131,9 @@
 				<p>Your Shopping List has been Updated</p>
 			{/if}
 		</div>
+		<h5 class="mb-2 text-2xl font-medium tracking-tight">Instructions:</h5>
+		{#each instructions as instruction}
+			<p class="pb-2">{instruction}</p>
+		{/each}
 	</div>
-</div>
+</main>
