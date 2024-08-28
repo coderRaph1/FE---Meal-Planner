@@ -3,7 +3,6 @@
 	import { atcb_action } from 'add-to-calendar-button';
 	console.log(atcb_action, '<<atcb_action');
 
-	// Initialize meal choices with values from localStorage or default to empty strings
 	let breakfast = localStorage.getItem('breakfast') || '';
 	let lunch = localStorage.getItem('lunch') || '';
 	let dinner = localStorage.getItem('dinner') || '';
@@ -18,22 +17,22 @@
 
 	function addBreakfast() {
 		config.breakfast = breakfast;
-		localStorage.setItem('breakfast', breakfast); // Save breakfast to localStorage
+		localStorage.setItem('breakfast', breakfast)
 	}
 
 	function addLunch() {
 		config.lunch = lunch;
-		localStorage.setItem('lunch', lunch); // Save lunch to localStorage
+		localStorage.setItem('lunch', lunch)
 	}
 
 	function addDinner() {
 		config.dinner = dinner;
-		localStorage.setItem('dinner', dinner); // Save dinner to localStorage
+		localStorage.setItem('dinner', dinner)
 	}
 
 	function addExtras() {
 		config.extras = extras;
-		localStorage.setItem('extras', extras); // Save extras to localStorage
+		localStorage.setItem('extras', extras)
 	}
 </script>
 
