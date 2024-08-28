@@ -2,28 +2,38 @@
 	import 'add-to-calendar-button';
 	import { atcb_action } from 'add-to-calendar-button';
 	console.log(atcb_action, '<<atcb_action');
-	let breakfast = '',
-		lunch = '',
-		dinner = '',
-		extras = '';
+
+	// Initialize meal choices with values from localStorage or default to empty strings
+	let breakfast = localStorage.getItem('breakfast') || '';
+	let lunch = localStorage.getItem('lunch') || '';
+	let dinner = localStorage.getItem('dinner') || '';
+	let extras = localStorage.getItem('extras') || '';
+
 	$: config = {
-    breakfast: "",
-    lunch: "",
-    dinner: "",
-    extras: "",
-  }
+		breakfast: breakfast,
+		lunch: lunch,
+		dinner: dinner,
+		extras: extras,
+	};
 
 	function addBreakfast() {
 		config.breakfast = breakfast;
+		localStorage.setItem('breakfast', breakfast); // Save breakfast to localStorage
 	}
+
 	function addLunch() {
 		config.lunch = lunch;
+		localStorage.setItem('lunch', lunch); // Save lunch to localStorage
 	}
+
 	function addDinner() {
 		config.dinner = dinner;
+		localStorage.setItem('dinner', dinner); // Save dinner to localStorage
 	}
+
 	function addExtras() {
 		config.extras = extras;
+		localStorage.setItem('extras', extras); // Save extras to localStorage
 	}
 </script>
 
