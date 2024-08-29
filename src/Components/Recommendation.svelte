@@ -5,7 +5,7 @@
 
 	let meals = [];
 
-	const favouriteMealIds = ['52772', '52768', '52767', '53000', '53010', '53020', '53030'];
+	const favouriteMealIds = ['52970', '53029', '52784' ,  '52990' , '52980' , '52889' , '52910' ,'52998'];
 
 	function fetchFavouriteMeals() {
 		Promise.all(favouriteMealIds.map((id) => getMealById(id)))
