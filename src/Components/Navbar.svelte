@@ -1,32 +1,32 @@
 <script>
 	import { userDetails } from '../stores';
-	import {browser} from "$app/environment"
-	let displayName 
-	let user_id
-	let avatar
+	import { browser } from '$app/environment';
+	let displayName;
+	let user_id;
+	let avatar;
 	if (browser) {
-		user_id = localStorage.getItem("user")
-		avatar = localStorage.getItem("avatar")
-		displayName = localStorage.getItem("displayName")
+		user_id = localStorage.getItem('user');
+		avatar = localStorage.getItem('avatar');
+		displayName = localStorage.getItem('displayName');
 	}
-	function handleSignOut(){
-		localStorage.removeItem("user")
+	function handleSignOut() {
+		localStorage.removeItem('user');
+		localStorage.removeItem('avatar');
+		localStorage.removeItem('displayName');
 	}
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
 	<div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-		<a
-			href="/choose-meals"
-			class="flex items-center space-x-3 rtl:space-x-reverse"
-		>
+		<a href="/choose-meals" class="flex items-center space-x-3 rtl:space-x-reverse">
 			<img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
 			<span class="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
 				>The Daily Dish</span
 			>
 		</a>
 		<div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-			<button data-collapse-toggle="navbar-user"
+			<button
+				data-collapse-toggle="navbar-user"
 				type="button"
 				class="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 md:me-0 dark:focus:ring-gray-600"
 				id="user-menu-button"
@@ -54,7 +54,7 @@
 				</div>
 			</button>
 			<!-- Dropdown menu -->
-			<div
+			<!-- <div
 				class="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700"
 				id="user-dropdown"
 			>
@@ -75,7 +75,7 @@
 						>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 			<button
 				data-collapse-toggle="navbar-user"
 				type="button"
@@ -129,7 +129,13 @@
 						>My Recipes</a
 					>
 				</li>
-			
+				<li>
+					<a
+						href="/"
+						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+						on:click={handleSignOut}>Sign out</a
+					>
+				</li>
 			</ul>
 		</div>
 	</div>
