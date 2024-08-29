@@ -5,11 +5,18 @@
 	import Modal from '../../Components/Modal.svelte';
 	import ListItems from '../../Components/ListItems.svelte';
 	import Navbar from '../../Components/Navbar.svelte';
+	import {browser} from "$app/environment"
+
+	
+	let user_id = ""
+    if (browser) {
+        user_id = localStorage.getItem("user")
+    }
 
 	let showModal = false;
 	let isErr = false;
 	onMount(() => {
-		getListsForUser($userDetails.user.user_id).then((data) => {
+		getListsForUser(user_id).then((data) => {
 			userLists.update(() => data.lists);
 		});
 	});
@@ -34,7 +41,7 @@
 		});
 		console.log(curr);
 		console.log(curr[index].list_id);
-		return deleteListFromAUser($userDetails.user.user_id, curr[index].list_id).catch((err) => {
+		return deleteListFromAUser(user_id, curr[index].list_id).catch((err) => {
 			isErr = true;
 			userLists.update(() => curr);
 		});
@@ -47,7 +54,7 @@
 	<button
 		data-modal-target="default-modal"
 		data-modal-toggle="default-modal"
-		class="mb-2 w-fit self-center rounded-md bg-gradient-to-tr from-teal-200 to-teal-100 px-4 py-2 outline"
+		class="mb-2 w-fit self-center rounded-md bg-gradient-to-tr from-teal-200 to-teal-100 px-4 py-2 outline text-black"
 		type="button"
 		on:click={() => (showModal = !showModal)}>Add a list</button
 	>

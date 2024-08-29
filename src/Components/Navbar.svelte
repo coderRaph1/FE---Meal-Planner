@@ -1,11 +1,16 @@
 <script>
 	import { userDetails } from '../stores';
 	import {browser} from "$app/environment"
+	let displayName 
 	let user_id
 	let avatar
 	if (browser) {
 		user_id = localStorage.getItem("user")
 		avatar = localStorage.getItem("avatar")
+		displayName = localStorage.getItem("displayName")
+	}
+	function handleSignOut(){
+		localStorage.removeItem("user")
 	}
 </script>
 
@@ -54,23 +59,18 @@
 				id="user-dropdown"
 			>
 				<div class="px-4 py-3">
-					<span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-					<span class="block truncate text-sm text-gray-500 dark:text-gray-400"
-						>name@flowbite.com</span
-					>
+					<span class="block text-sm text-gray-900 dark:text-white">{displayName}</span>
 				</div>
 				<ul class="py-2" aria-labelledby="user-menu-button">
 					<li>
-						<a
-							href="/settings"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-							>Settings</a
-						>
+						<p class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">
+							Settings
+						</p>
 					</li>
 					<li>
 						<a
 							href="/"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white" on:click={handleSignOut}
 							>Sign out</a
 						>
 					</li>
@@ -129,13 +129,7 @@
 						>My Recipes</a
 					>
 				</li>
-				<li>
-					<a
-						href="/contact"
-						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-						>Contact Us!</a
-					>
-				</li>
+			
 			</ul>
 		</div>
 	</div>

@@ -9,6 +9,7 @@
 	let amount;
 	let error = false;
 	let showEdit = 'hide';
+	
 
 	function handleClick() {
 		if (item_name && amount) {

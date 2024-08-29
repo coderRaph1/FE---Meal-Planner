@@ -36,6 +36,9 @@
 				//set it in store
 				userDetails.update(() => user);
 				localStorage.setItem('user', user)
+				localStorage.setItem("avatar", user.avatarURL)
+				localStorage.setItem("displayName", user.displayName)
+				console.log(user.displayName, '<<<<');
 				goto('/calendar'); // SUCCESSFUL sign-in
 			})
 			.catch((error) => {
@@ -46,6 +49,9 @@
 					console.log("")
 					localStorage.setItem('user', user.user_id)
 					localStorage.setItem("avatar", user.avatarURL)
+					localStorage.setItem("displayName", user.displayName)
+					console.log(user.displayName, '<<<<');
+
 					goto('/calendar');
 				} else {
 					console.error('Error signing in:', error);

@@ -2,21 +2,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import { userDetails, userLists } from '../stores';
 	import { postNewList, postNewListByUSerId } from '../../src/api';
-	import Categories from './Categories.svelte';
-	//let savestore = false;
-	//let list_id = 2
-	// $: if (savestore && $userDetails) {
-	// 	window.sessionStorage.setItem('store', JSON.stringify($userDetails));
-	// }
-	// onMount(async () => {
-	// 	let ses = window.sessionStorage.getItem('store');
-	// 	if (ses) {
-	// 		console.log('sob-- ~ loading ses', ses);
-	// 		$userDetails = JSON.parse(ses);
-	//           console.log($userDetails,'<<<')
-	// 	}
-	// 	savestore = true;
-	// });
+	import {browser} from "$app/environment"
+
+	let user_id = ""
+    if (browser) {
+        user_id = localStorage.getItem("user")
+    }
+
 
 	const dispatch = createEventDispatcher();
 	let list_name;
@@ -34,22 +26,18 @@
 			userLists.update(() => [...$userLists, newListObj]);
 		}
 
-		// /console.log(list_name, '<<list name');
 		postNewList(list_name, isPrivate)
 			.then((data) => {
-				console.log(data.list.list_id, '>>>>', $userDetails.user.user_id);
 				newListObj.list_id = data.list.list_id;
-				return postNewListByUSerId(data.list.list_id, $userDetails.user.user_id);
+				return postNewListByUSerId(data.list.list_id, user_id);
 			})
 			.then((response) => {
-				console.log($userLists, '<<user lists');
 				return $userLists;
 			});
 		show = false;
 		dispatch('close');
 	};
 	const handleClose = () => {
-		//console.log('inside handle');
 
 		showModal = false;
 	};
