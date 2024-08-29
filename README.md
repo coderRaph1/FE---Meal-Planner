@@ -88,7 +88,7 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. 
+1. If you haven't already, visit our guide for to create your own backend API [here](https://github.com/nldblanch/event-handlers-meal-planner-BE/blob/main/README.md), including creating your own database.
 2. Clone the repo
    ```sh
    git clone https://github.com/coderRaph/FE---Meal-Planner.git
@@ -97,9 +97,13 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-4. 
-   
-5. 
+4. Add a .env.development file as guided in our backend [guide](https://github.com/nldblanch/event-handlers-meal-planner-BE/blob/main/README.md#installation)
+
+    Make sure you add the FIREBASECONFIG environment variable, except this time add it as
+   ```js
+   VITE_FIREBASECONFIG=""
+   ```
+   This allows Vite to hook your environment variable when it's building.
 
 6. Change git remote url to avoid accidental pushes to base project
    ```sh
@@ -111,21 +115,37 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ### Hosting
 
-#### 1. 
+It's very easy to get this site running on your local machine. Simply run
+```js
+npm run dev
+```
+But how about your own hosted website?
 
-#### 2. 
+#### 1. Sign up for Netlify 
 
-#### 3. 
+There are many ways to host a website, but we used Netlify. Create yourself an account and connect your GitHub profile.
+
+#### 2. Add a new site
+
+Once you have done that, navigate to the Sites tab and click Add new site. Import an existing project - your GitHub project you just created! Everything will be setup already - most importantly though, check the branch is 'main' and the build command is npm run build.
+
+#### 3. Add environment variables
+
+Add your environment variable from your Front-end repo into Netlify's environment variables section. It will give you the option to copy and paste the contents of a .env file. 
+
+#### 4. Deploy
+
+Deploy your project and wait for it to finish building. That's it! You're done. You have your own site, and you can redeploy it any time you make changes. Alternatively, you can modify the settings of your Netlify site to deploy every time you push changes to your GitHub Main branch. If you do, make sure you make use of branching in Git to avoid pushing anything that could break your live site!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Usage
 
-Try doing this with the meal planner
+Try adding your own meal to the database!
 
-Or try doing that
+Or perhaps try searching for a meal on the database.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/coderRaph1/FE---Meal-Planner)_
 
 ### Top contributors:
 
@@ -136,6 +156,8 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Acknowledgments
 
 - [Northcoders][NC-url]
+- [Google Calendar API][google-calendar-API]
+- [Free Meal API][free-meal-api]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -149,3 +171,5 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [linkedin-url]: https://linkedin.com/in/nathanblanch
 [product-screenshot]: https://github.com/user-attachments/assets/a1de4a1c-c0cd-4412-9902-a03d9c31e759
 [BE-host]: https://event-handlers-meal-planner-be.onrender.com/api
+[google-calendar-API]: https://developers.google.com/calendar
+[free-meal-api]: https://www.themealdb.com/api.php
