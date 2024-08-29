@@ -147,5 +147,5 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [contributors-url]: https://github.com/coderRaph1/FE---Meal-Planner/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathanblanch
-[product-screenshot]: 
+[product-screenshot]: https://github.com/user-attachments/assets/a1de4a1c-c0cd-4412-9902-a03d9c31e759
 [BE-host]: https://event-handlers-meal-planner-be.onrender.com/api
