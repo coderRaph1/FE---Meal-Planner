@@ -32,15 +32,20 @@
 				return postUser(userBody);
 			})
 			.then((user) => {
-				const { user_id } = user;
+				// const { user_id } = user;
 				//set it in store
 				userDetails.update(() => user);
+				localStorage.setItem('user', user)
 				goto('/calendar'); // SUCCESSFUL sign-in
 			})
 			.catch((error) => {
 				console.log('hihi');
 				if (error.response.data.user) {
-					userDetails.update(() => error.response.data);
+					const user = error.response.data.user
+					userDetails.update(() => user);
+					console.log("")
+					localStorage.setItem('user', user.user_id)
+					localStorage.setItem("avatar", user.avatarURL)
 					goto('/calendar');
 				} else {
 					console.error('Error signing in:', error);

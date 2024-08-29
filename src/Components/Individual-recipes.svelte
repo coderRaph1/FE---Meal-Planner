@@ -5,7 +5,9 @@
   import { page } from '$app/stores';
 	import { getListsForUser, postItem } from "../api";
 	import { userDetails, userLists } from "../stores";
-
+  import {browser} from "$app/environment"
+  let user_id
+  if (browser) user_id = localStorage.getItem("user")
   let currentPath = '/';
   let mealData = {};
   let selectedIngredients = [];
@@ -24,8 +26,7 @@
         else if (instruction[instruction.length-1] === "!") return instruction
         else return instruction + "."
       })
-      console.log($userDetails, 'user details');
-      return getListsForUser($userDetails.user.user_id)
+      return getListsForUser(user_id)
     }).then((data) => {
       usersList = data.lists
       console.log(usersList, 'the different lists available');

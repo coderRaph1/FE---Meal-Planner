@@ -1,12 +1,19 @@
 <script>
 	import 'add-to-calendar-button';
 	import { atcb_action } from 'add-to-calendar-button';
+	import {browser} from "$app/environment"
 	console.log(atcb_action, '<<atcb_action');
+	let breakfast
+	let lunch
+	let dinner
+	let extras
+	if (browser) {
+		breakfast = localStorage.getItem('breakfast') || '';
+		lunch = localStorage.getItem('lunch') || '';
+		dinner = localStorage.getItem('dinner') || '';
+		extras = localStorage.getItem('extras') || '';
 
-	let breakfast = localStorage.getItem('breakfast') || '';
-	let lunch = localStorage.getItem('lunch') || '';
-	let dinner = localStorage.getItem('dinner') || '';
-	let extras = localStorage.getItem('extras') || '';
+	}
 
 	$: config = {
 		breakfast: breakfast,

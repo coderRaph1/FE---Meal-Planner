@@ -1,5 +1,12 @@
 <script>
 	import { userDetails } from '../stores';
+	import {browser} from "$app/environment"
+	let user_id
+	let avatar
+	if (browser) {
+		user_id = localStorage.getItem("user")
+		avatar = localStorage.getItem("avatar")
+	}
 </script>
 
 <nav class="border-gray-200 bg-white dark:bg-gray-900">
@@ -24,8 +31,8 @@
 			>
 				<span class="sr-only">Open user menu</span>
 				<div class="relative h-10 w-10 overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-					{#if $userDetails.user.avatarURL}
-						<img src={$userDetails.user.avatarURL} alt="your user pic" />
+					{#if user_id}
+						<img src={avatar} alt="your user pic" />
 					{:else}
 						<svg
 							class="absolute -left-1 h-12 w-12 text-gray-400"
