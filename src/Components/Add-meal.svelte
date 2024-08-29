@@ -3,17 +3,29 @@
 	import { atcb_action } from 'add-to-calendar-button';
 	import {browser} from "$app/environment"
 	console.log(atcb_action, '<<atcb_action');
+	import { onMount } from "svelte";
+
 	let breakfast
 	let lunch
 	let dinner
 	let extras
-	if (browser) {
-		breakfast = localStorage.getItem('breakfast') || '';
-		lunch = localStorage.getItem('lunch') || '';
-		dinner = localStorage.getItem('dinner') || '';
-		extras = localStorage.getItem('extras') || '';
+	let selectedDay = null
 
+	function getMealsForDay(day) {
+		if (browser) {
+			breakfast = localStorage.getItem(`${day}-breakfast`) || '';
+			lunch = localStorage.getItem(`${day}-lunch`) || '';
+			dinner = localStorage.getItem(`${day}-dinner`) || '';
+			extras = localStorage.getItem(`${day}-extras`) || '';
+		}
 	}
+
+	onMount(() => {
+		selectedDay = new URLSearchParams(window.location.search).get('selectedDay');
+		if (selectedDay) {
+			getMealsForDay(selectedDay);
+		}
+	});
 
 	$: config = {
 		breakfast: breakfast,
@@ -24,22 +36,22 @@
 
 	function addBreakfast() {
 		config.breakfast = breakfast;
-		localStorage.setItem('breakfast', breakfast)
+		localStorage.setItem(`${selectedDay}-breakfast`, breakfast)
 	}
 
 	function addLunch() {
 		config.lunch = lunch;
-		localStorage.setItem('lunch', lunch)
+		localStorage.setItem(`${selectedDay}-lunch`, lunch)
 	}
 
 	function addDinner() {
 		config.dinner = dinner;
-		localStorage.setItem('dinner', dinner)
+		localStorage.setItem(`${selectedDay}-dinner`, dinner)
 	}
 
 	function addExtras() {
 		config.extras = extras;
-		localStorage.setItem('extras', extras)
+		localStorage.setItem(`${selectedDay}-extras`, extras)
 	}
 </script>
 
@@ -59,7 +71,7 @@
 			<button
 				type="submit"
 				class="h-fit bg-teal-600 px-2 text-sm focus:bg-teal-600"
-				on:click={addBreakfast}>Set My Meal</button
+				on:click={addBreakfast}>Save My Meal</button
 			>
 			<div class="mx-auto">
 				<add-to-calendar-button
@@ -116,7 +128,7 @@
 			<button
 				type="submit"
 				class="h-fit bg-teal-600 px-2 text-sm focus:bg-teal-600"
-				on:click={addLunch}>Set My Meal</button
+				on:click={addLunch}>Save My Meal</button
 			>
 			<div class="mx-auto">
 				<add-to-calendar-button
@@ -173,7 +185,7 @@
 			<button
 				type="submit"
 				class="h-fit bg-teal-600 px-2 text-sm focus:bg-teal-600"
-				on:click={addDinner}>Set My Meal</button
+				on:click={addDinner}>Save My Meal</button
 			>
 			<div class="mx-auto">
 				<add-to-calendar-button
@@ -230,7 +242,7 @@
 			<button
 				type="submit"
 				class="h-fit bg-teal-600 px-2 text-sm focus:bg-teal-600"
-				on:click={addExtras}>Set My Meal</button
+				on:click={addExtras}>Save My Meal</button
 			>
 			<div class="mx-auto">
 				<add-to-calendar-button
