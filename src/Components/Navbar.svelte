@@ -53,7 +53,7 @@
 					{/if}
 				</div>
 			</button>
-			<!-- Future Dropdown menu -->
+			<!-- Dropdown menu -->
 			<!-- <div
 				class="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-white text-base shadow dark:divide-gray-600 dark:bg-gray-700"
 				id="user-dropdown"
@@ -76,7 +76,7 @@
 					</li>
 				</ul>
 			</div> -->
-			<!-- <button
+			<button
 				data-collapse-toggle="navbar-user"
 				type="button"
 				class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -100,44 +100,43 @@
 					/>
 				</svg>
 			</button>
-		</div> -->
-			<div
-				class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
-				id="navbar-user"
+		</div>
+		<div
+			class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
+			id="navbar-user"
+		>
+			<ul
+				class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
 			>
-				<ul
-					class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900"
-				>
-					<li>
-						<a
-							href="/calendar"
-							class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
-							aria-current="page">My Calendar</a
-						>
-					</li>
-					<li>
-						<a
-							href="/shopping-list"
-							class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-							>My Shopping List</a
-						>
-					</li>
-					<li>
-						<a
-							href="/recipes"
-							class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-							>My Recipes</a
-						>
-					</li>
-					<li>
-						<a
-							href="/"
-							class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-							on:click={handleSignOut}>Sign out</a
-						>
-					</li>
-				</ul>
-			</div>
+				<li>
+					<a
+						href="/calendar"
+						class="block rounded bg-blue-700 px-3 py-2 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
+						aria-current="page">My Calendar</a
+					>
+				</li>
+				<li>
+					<a
+						href="/shopping-list"
+						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+						>My Shopping List</a
+					>
+				</li>
+				<li>
+					<a
+						href="/recipes"
+						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+						>My Recipes</a
+					>
+				</li>
+				<li>
+					<a
+						href="/"
+						class="block rounded px-3 py-2 text-gray-900 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+						on:click={handleSignOut}>Sign out</a
+					>
+				</li>
+			</ul>
 		</div>
 	</div>
 </nav>
