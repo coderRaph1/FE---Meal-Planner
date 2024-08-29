@@ -75,7 +75,7 @@
 				}}>{list.list_name}</button
 			>
 			<button
-				class="mb-2 w-28 self-center rounded-md bg-gradient-to-tr from-teal-200 to-teal-100 px-4 py-2 outline {showEdit}"
+				class="mb-2 w-28 self-center rounded-md bg-gradient-to-tr from-teal-200 to-teal-100 px-4 py-2 outline text-black {showEdit}"
 				on:click={() => {
 					deleteList(index);
 				}}>Delete list</button
