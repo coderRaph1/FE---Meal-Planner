@@ -3,6 +3,8 @@
 	import { userDetails } from '../../../stores.js';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import {browser} from "$app/environment"
+
 	let cook_time = 10;
 	let prep_time = 15;
 	let recipe_name = '';
@@ -11,8 +13,13 @@
 	$: ingredients = [];
 	$: instructions = [];
 	$: submitted = false;
+	let user_id = ""
+    if (browser) {
+        user_id = localStorage.getItem("user")
+    }
+
 	onMount(() => {
-	  console.log("hello", $userDetails.user.user_id)
+	  console.log("hello", user_id)
 	})
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -35,7 +42,7 @@
 				ingredients: ingredients.join(' \n '),
 				instructions: instructions.join(' \n ')
 			};
-			return postRecipe($userDetails.user.user_id, body).then(() => {
+			return postRecipe(user_id, body).then(() => {
 				goto('/recipes');
 			});
 		}

@@ -2,12 +2,18 @@
 <script>
 	import { onMount } from 'svelte';
 	import { getUserRecipes, postRecipe } from '../../api.js';
-	import { userDetails } from '../../stores.js';
 	import { goto } from '$app/navigation';
 	import Navbar from '../../Components/Navbar.svelte';
+	import {browser} from "$app/environment"
+
+	let user_id = ""
+    if (browser) {
+        user_id = localStorage.getItem("user")
+    }
+
 	$: userRecipes = [];
 	onMount(() => {
-		getUserRecipes($userDetails.user.user_id).then(({ recipes }) => {
+		getUserRecipes(user_id).then(({ recipes }) => {
 			userRecipes = [...recipes];
 			});
 			});

@@ -92,3 +92,8 @@ body {
   .confirmation-message strong {
       color: #23881a;
   }
+  
+  button{
+    color: #000000;
+    border: 1px black;
+  }
